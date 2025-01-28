@@ -15,15 +15,11 @@ app.get('/', function(req, res) {
     res.sendFile('index.html', {root:ABS_STATIC_PATH});
 });
 
-app.get('/3D', function(req, res) {
-    res.sendFile('simple3D.html', {root:ABS_STATIC_PATH});
-});
-
 //middleware
 //after someone makes a request
 //we do something (in the middle)
 //then we send back something
-app.use(express.static(ABS_STATIC_PATH));   //so files requested by client come from this root
 
 server.listen(LISTEN_PORT);     //start server
+app.use(express.static(__dirname + '/public'));
 console.log("Listening on port: " + LISTEN_PORT);   //if we don't see this message, something is wrong
