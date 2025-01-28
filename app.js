@@ -9,6 +9,7 @@ const LISTEN_PORT = 8080;
 //this tell the sever the "root" path of web-loaded files
 const ABS_STATIC_PATH = __dirname + '/public';
 
+app.use(express.static(ABS_STATIC_PATH));
 //set our routes
 //when someone accesses this path, send them something back
 app.get('/', function(req, res) {
@@ -21,5 +22,4 @@ app.get('/', function(req, res) {
 //then we send back something
 
 server.listen(LISTEN_PORT);     //start server
-app.use(express.static(__dirname + '/public'));
 console.log("Listening on port: " + LISTEN_PORT);   //if we don't see this message, something is wrong
