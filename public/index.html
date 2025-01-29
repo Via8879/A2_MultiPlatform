@@ -12,19 +12,47 @@
         <a-entity environment="preset: forest; ground: flat; groundColor: #228B22;"></a-entity>
         <a-assets>
           <a-asset-item id="Bunny_model" response-type="arraybuffer" src="assets/Bunny.glb"></a-asset-item>
-          <a-asset-item id="carrot_model" response-type="arraybuffer" src="assets/carrot.glb"></a-asset-item>
+          <a-asset-item id="carrot_model" response-type="arraybuffer" src="assets/carrot_2.glb"></a-asset-item>
           <a-asset-item id="beet_model" response-type="arraybuffer" src="assets/beet.glb"></a-asset-item>
           <a-asset-item id="Tomato_model" response-type="arraybuffer" src="assets/tomato.glb"></a-asset-item>
-          <a-asset-item id="TomPlant_model" response-type="arraybuffer" src="assets/tomatoPlant-1.glb"></a-asset-item>
-          <a-asset-item id="Lettuce_model" response-type="arraybuffer" src="assets/bush.glb"></a-asset-item>
+          <a-asset-item id="TomPlant_model" response-type="arraybuffer" src="assets/tomatoPlant-2.glb"></a-asset-item>
+          <a-asset-item id="Bush_model" response-type="arraybuffer" src="assets/bush.glb"></a-asset-item>
+          <a-asset-item id="TrashCan_model" response-type="arraybuffer" src="assets/trash.glb"></a-asset-item>
+          <a-asset-item id="Basket_model" response-type="arraybuffer" src="assets/basket.glb"></a-asset-item>
         </a-assets>
         <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#808080" material="shader: grid;"></a-plane>
-        <a-entity gltf-model="#Bunny_model" position="0 0 -5" scale="0.5 0.5 0.5"></a-entity>
-        <a-entity gltf-model="#carrot_model" position="0 0 -3" scale="0.005 0.005 0.005"></a-entity>
+        <!--Feed the bunny -->
+        <a-entity gltf-model="#Bunny_model" position="0 -0.2 -5" scale="0.5 0.5 0.5"></a-entity>
+        <!--4 carrots-->
+        <a-entity gltf-model="#carrot_model" position="0 0 -3" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#carrot_model" position="3 0 -3" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#carrot_model" position="5 0 -3" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#carrot_model" position="8 0 -3" scale="0.2 0.2 0.2"></a-entity>
+        <!--4 beets-->
         <a-entity gltf-model="#beet_model" position="0 0 -1" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#Tomato_model" position="0 0 -8" scale="0.02 0.02 0.02s"></a-entity>
-        <a-entity gltf-model="#TomPlant_model" position="0 0 -10" scale="0.005 0.005 0.005"></a-entity>
-        <a-entity gltf-model="#Lettuce_model" position="0 0 -13" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#beet_model" position="3 0 -1" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#beet_model" position="5 0 -1" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#beet_model" position="8 0 -1" scale="0.2 0.2 0.2"></a-entity>
+        <!--tomatos under the tomato plants-->
+        <a-entity gltf-model="#Tomato_model" position="0 0 -8" scale="0.002 0.002 0.002"></a-entity>
+        <a-entity gltf-model="#Tomato_model" position="3 0 -8" scale="0.002 0.002 0.002"></a-entity>
+        <a-entity gltf-model="#Tomato_model" position="5 0 -8" scale="0.002 0.002 0.002"></a-entity>
+        <a-entity gltf-model="#Tomato_model" position="8 0 -8" scale="0.002 0.002 0.002"></a-entity>
+        <!--4 tomato plants-->
+        <a-entity gltf-model="#TomPlant_model" position="0 0 -10" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#TomPlant_model" position="3 0 -10" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#TomPlant_model" position="5 0 -10" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#TomPlant_model" position="8 0 -10" scale="0.1 0.1 0.1"></a-entity>
+        <!--Bushes for perimiter-->
+        <a-entity gltf-model="#Bush_model" position="0 0 -13" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#Bush_model" position="3 0 -13" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#Bush_model" position="5 0 -13" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#Bush_model" position="8 0 -13" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#Bush_model" position="10 0 -13" scale="1 1 1"></a-entity>
+        <!--to put vetagels in trash-->
+        <a-entity gltf-model="#TrashCan_model" position="0 0.6 -18" scale="1 1 1"></a-entity>
+        <!--to put vegatbles i the basket-->
+        <a-entity gltf-model="#Basket_model" position="0 0 -18" scale="3 3 3"></a-entity>
       </a-scene>
     </body>
 </html>
