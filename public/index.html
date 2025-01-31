@@ -5,12 +5,11 @@
       <meta name="description" content="The Little Garden">
       <script src="js/aframe.min.js"></script>
       <script src="js/aframe-environment-component.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@3.2.0/dist/aframe-physics-system.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/ammo.js/2.0.6/ammo.wasm.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
       
     </head>
     <body>
-      <a-scene physics="gravity: -9.8">
+      <a-scene physics="debug: false; gravity: -9.8">
         <a-entity environment="preset: forest; ground: flat; groundColor: #228B22;"></a-entity>
         <a-assets>
           <audio id="Ambient_Garden" src="Music/Ambience_Garden.mp3" preload="auto" crossorigin="anonymous"></audio>
@@ -25,7 +24,7 @@
         <!--music-->
         <a-entity sound="src:#Ambient_Garden; autoplay:true;"></a-entity>
         <!--the floor plane-->
-        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#808080"></a-plane>
+        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#808080" material="shader: grid;"></a-plane>
 
         <!--Cursor-->
         <a-entity>
@@ -53,11 +52,11 @@
         <a-entity gltf-model="#TomPlant_model" position="2 0 -3" scale="0.1 0.1 0.1"></a-entity>
         <a-entity gltf-model="#TomPlant_model" position="3 0 -3" scale="0.1 0.1 0.1"></a-entity>
         <!--to put vetagels in trash-->
-        <a-entity gltf-model="#TrashCan_model" position="5 0.6 -6" scale="1 1 1"></a-entity>
+        <a-entity id="trash" gltf-model="#TrashCan_model" position="5 0.6 -6" scale="1 1 1"></a-entity>
         <!--to put vegatbles i the basket-->
-        <a-entity gltf-model="#Basket_model" position="5 0 -6" scale="3 3 3"></a-entity>
+        <a-entity id="basket" gltf-model="#Basket_model" position="5 0 -6" scale="3 3 3"></a-entity>
         <!--Feed the bunny -->
-        <a-entity gltf-model="#Bunny_model" position="5 -0.2 -5" scale="0.5 0.5 0.5"></a-entity>
+        <a-entity id="bunny" gltf-model="#Bunny_model" position="5 -0.2 -5" scale="0.5 0.5 0.5"></a-entity>
       </a-scene>
       <script src="Mouvment/interactions.js"></script>
     </body>
