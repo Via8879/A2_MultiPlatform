@@ -5,12 +5,15 @@
       <meta name="description" content="The Little Garden">
       <script src="js/aframe.min.js"></script>
       <script src="js/aframe-environment-component.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@3.2.0/dist/aframe-physics-system.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ammo.js/2.0.6/ammo.wasm.js"></script>
       
     </head>
     <body>
-      <a-scene>
+      <a-scene physics="gravity: -9.8">
         <a-entity environment="preset: forest; ground: flat; groundColor: #228B22;"></a-entity>
         <a-assets>
+          <audio id="Ambient_Garden" src="Music/Ambience_Garden.mp3" preload="auto" crossorigin="anonymous"></audio>
           <a-asset-item id="Bunny_model" response-type="arraybuffer" src="assets/Bunny.glb"></a-asset-item>
           <a-asset-item id="carrot_model" response-type="arraybuffer" src="assets/carrot_2.glb"></a-asset-item>
           <a-asset-item id="beet_model" response-type="arraybuffer" src="assets/beet.glb"></a-asset-item>
@@ -19,22 +22,31 @@
           <a-asset-item id="TrashCan_model" response-type="arraybuffer" src="assets/trash.glb"></a-asset-item>
           <a-asset-item id="Basket_model" response-type="arraybuffer" src="assets/basket.glb"></a-asset-item>
         </a-assets>
-        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#808080" material="shader: grid;"></a-plane>
+        <!--music-->
+        <a-entity sound="src:#Ambient_Garden; autoplay:true;"></a-entity>
+        <!--the floor plane-->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#808080"></a-plane>
+
+        <!--Cursor-->
+        <a-entity>
+          <a-camera id="camera" position="0 1.6 3"></a-camera>
+          <a-entity cursor="rayOrigin: mouse" raycaster="objects: .grabbable" cursor-grab></a-entity>
+        </a-entity>
         <!--4 carrots-->
-        <a-entity gltf-model="#carrot_model" position="0 0 -2" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#carrot_model" position="1 0 -2" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#carrot_model" position="2 0 -2" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#carrot_model" position="3 0 -2" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#carrot_model" class="grabbable" position="0 0.2 -2" scale="0.2 0.2 0.2" dynamic-body></a-entity>
+        <a-entity gltf-model="#carrot_model" class="grabbable" position="1 0.2 -2" scale="0.2 0.2 0.2" dynamic-body></a-entity>
+        <a-entity gltf-model="#carrot_model" class="grabbable" position="2 0.2 -2" scale="0.2 0.2 0.2" dynamic-body></a-entity>
+        <a-entity gltf-model="#carrot_model" class="grabbable" position="3 0.2 -2" scale="0.2 0.2 0.2" dynamic-body></a-entity>
         <!--4 beets-->
-        <a-entity gltf-model="#beet_model" position="0 0 -1" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#beet_model" position="1 0 -1" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#beet_model" position="2 0 -1" scale="0.2 0.2 0.2"></a-entity>
-        <a-entity gltf-model="#beet_model" position="3 0 -1" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#beet_model" class="grabbable" position="0 0.2 -1" scale="0.2 0.2 0.2" dynamic-body></a-entity>
+        <a-entity gltf-model="#beet_model" class="grabbable" position="1 0.2 -1" scale="0.2 0.2 0.2" dynamic-body></a-entity>
+        <a-entity gltf-model="#beet_model" class="grabbable" position="2 0.2 -1" scale="0.2 0.2 0.2" dynamic-body></a-entity>
+        <a-entity gltf-model="#beet_model" class="grabbable" position="3 0.2 -1" scale="0.2 0.2 0.2" dynamic-body></a-entity>
         <!--tomatos under the tomato plants-->
-        <a-entity gltf-model="#Tomato_model" position="0 0 -3" scale="0.002 0.002 0.002"></a-entity>
-        <a-entity gltf-model="#Tomato_model" position="1 0 -3" scale="0.002 0.002 0.002"></a-entity>
-        <a-entity gltf-model="#Tomato_model" position="2 0 -3" scale="0.002 0.002 0.002"></a-entity>
-        <a-entity gltf-model="#Tomato_model" position="3 0 -3" scale="0.002 0.002 0.002"></a-entity>
+        <a-entity gltf-model="#Tomato_model" class="grabbable" position="0 0.2 -3" scale="0.002 0.002 0.002" dynamic-body></a-entity>
+        <a-entity gltf-model="#Tomato_model" class="grabbable" position="1 0.2 -3" scale="0.002 0.002 0.002" dynamic-body></a-entity>
+        <a-entity gltf-model="#Tomato_model" class="grabbable" position="2 0.2 -3" scale="0.002 0.002 0.002" dynamic-body></a-entity>
+        <a-entity gltf-model="#Tomato_model" class="grabbable" position="3 0.2 -3" scale="0.002 0.002 0.002" dynamic-body></a-entity>
         <!--4 tomato plants-->
         <a-entity gltf-model="#TomPlant_model" position="0 0 -3" scale="0.1 0.1 0.1"></a-entity>
         <a-entity gltf-model="#TomPlant_model" position="1 0 -3" scale="0.1 0.1 0.1"></a-entity>
@@ -47,5 +59,6 @@
         <!--Feed the bunny -->
         <a-entity gltf-model="#Bunny_model" position="5 -0.2 -5" scale="0.5 0.5 0.5"></a-entity>
       </a-scene>
+      <script src="Mouvment/interactions.js"></script>
     </body>
 </html>
