@@ -3,9 +3,11 @@
     <head>
       <title>The Little Garden</title>
       <meta name="description" content="The Little Garden">
+
       <script src="js/aframe.min.js"></script>
+      
+      <script src="js/aframe-physics-system.min.js"></script>
       <script src="js/aframe-environment-component.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
       
     </head>
     <body>
@@ -22,7 +24,7 @@
           <a-asset-item id="Basket_model" response-type="arraybuffer" src="assets/basket.glb"></a-asset-item>
         </a-assets>
         <!--music-->
-        <a-entity sound="src:#Ambient_Garden; autoplay:true;"></a-entity>
+        <a-entity id="Background" sound="src: #Ambient_Garden; autoplay: false; loop: true; volume: 0.5"></a-entity>
         <!--the floor plane-->
         <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#808080" material="shader: grid;"></a-plane>
 
@@ -58,6 +60,35 @@
         <!--Feed the bunny -->
         <a-entity id="bunny" gltf-model="#Bunny_model" position="5 -0.2 -5" scale="0.5 0.5 0.5"></a-entity>
       </a-scene>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let soundEntity = document.querySelector("#Background");
+          let audioElement = document.querySelector("#Ambient_Garden");
+
+          function playMusic() {
+            if (audioElement) {
+              audioElement.loop = true;
+              audioElement.play().then(() => {
+                console.log("Audio started");
+              }).catch((error) => {
+                console.log("Audio playback failed");
+              });
+            }else {
+              console.log("Audio element not found");
+            }
+          }
+
+          document.addEventListener("click", playMusic, { once: true });
+          document.addEventListener("touchstart", playMusic, {once: true});
+
+          if (soundEntity) {
+            setTimeout(() => {
+              soundEntity.components.sound.playSound();
+            }, 1000);
+          }
+
+        });
+      </script>
       <script src="Mouvment/interactions.js"></script>
     </body>
 </html>

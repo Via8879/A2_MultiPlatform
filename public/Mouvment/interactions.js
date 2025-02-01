@@ -26,7 +26,7 @@ AFRAME.registerComponent("cursor-grab", {
             messageBox.setAttribute("value", msg);
             setTimeout(() => {
                 messageBox.setAttribute("value", "");
-            }, 2000);
+            }, 4000);
         }
         
 
@@ -48,53 +48,34 @@ AFRAME.registerComponent("cursor-grab", {
                 if (!grabbedObject) {
 
                     grabbedObject = intersectedObject;
+
+                    if (!grabbedObject.hasAttribute("data-original-scale")) {
+
+                        let originalScale = grabbedObject.getAttribute("scale");
+                        grabbedObject.setAttribute("data-original-scale", originalScale);
+                    }
                     grabbedObject.removeAttribute("dynamic-body");
-                    grabbedObject.setAttribute("scale", "0.2 0.2 0.2");
                     updatedObjectPosition();
                 }
-                else {
-                    grabbedObject.setAttribute("dynamic-body", "mass: 1");
-                    checkDrop(grabbedObject);
-                    grabbedObject = null;
-    
-                }
+                
             }
 
         });
 
-        function checkDrop(obj){
-            let objPos = AFRAME.utils.coordinate.pars(obj.getAttribute("position"));
-
-            let trashPos = AFRAME.utils.coordinate.pars(trashCan.getAttribute("position"));
-            let basketPos = AFRAME.utils.coordinate.pars(basket.getAttribute("position"));
-            let bunnyPos = AFRAME.utils.coordinate.pars(bunny.getAttribute("position"));
-
-            if (distance(objPos, trashPos) < 1.5) {
-                showMessage("Vegetable was put in the trash");
-                obj.parentNode.removeChild(obj);
-                return;
-            }
-
-            if (distance(objPos, basketPos) < 1.5) {
-                showMessage("Vegetable was put in the basket");
-                obj.parentNode.removeChild(obj);
-                return;
-            }
-
-            if (distance(objPos, bunnyPos) < 1.5) {
-                showMessage("You have feed the bunny!!");
-                obj.parentNode.removeChild(obj);
-                return;
-            }
-            
+        function handleDrop(target, message) {
+            target.addEventListener("click", function () {
+                if (grabbedObject) {
+                    showMessage(message);
+                    grabbedObject.parentNode.removeChild(grabbedObject);
+                    grabbedObject = null;
+                }
+            });
         }
 
-        function distance(pos1, pos2) {
-            return Math.sqrt(
-                Math.pow(pos1.x - pos2.x, 2) +
-                Math.pow(pos1.y - pos2.y, 2) +
-                Math.pow(pos1.z - pos2.z, 2)
-            );
-        }
+        handleDrop(trashCan, "Vegetable has been put in the trash");
+        handleDrop(basket, "Vegetable has been put in the basket");
+        handleDrop(bunny, "You fed the bunny!!");
+
+       
     }
 });
