@@ -31,7 +31,7 @@
         <!--Cursor-->
         <a-entity>
           <a-camera id="camera" position="0 1.6 3"></a-camera>
-          <a-entity cursor="rayOrigin: mouse" raycaster="objects: .grabbable" cursor-grab></a-entity>
+          <a-entity cursor="rayOrigin: mouse" raycaster="objects: .grabbable, .clickable" cursor-grab></a-entity>
         </a-entity>
         <!--4 carrots-->
         <a-entity gltf-model="#carrot_model" class="grabbable" position="0 0.2 -2" scale="0.2 0.2 0.2" dynamic-body></a-entity>
@@ -54,11 +54,11 @@
         <a-entity gltf-model="#TomPlant_model" position="2 0 -3" scale="0.1 0.1 0.1"></a-entity>
         <a-entity gltf-model="#TomPlant_model" position="3 0 -3" scale="0.1 0.1 0.1"></a-entity>
         <!--to put vetagels in trash-->
-        <a-entity id="trash" gltf-model="#TrashCan_model" position="5 0.6 -6" scale="1 1 1"></a-entity>
+        <a-entity id="trash" gltf-model="#TrashCan_model" position="5 0.6 -6" scale="1 1 1" class="clickable"></a-entity>
         <!--to put vegatbles i the basket-->
-        <a-entity id="basket" gltf-model="#Basket_model" position="5 0 -6" scale="3 3 3"></a-entity>
+        <a-entity id="basket" gltf-model="#Basket_model" position="5 0 -6" scale="3 3 3" class="clickable"></a-entity>
         <!--Feed the bunny -->
-        <a-entity id="bunny" gltf-model="#Bunny_model" position="5 -0.2 -5" scale="0.5 0.5 0.5"></a-entity>
+        <a-entity id="bunny" gltf-model="#Bunny_model" position="5 -0.2 -5" scale="0.5 0.5 0.5" class="clickable"></a-entity>
       </a-scene>
       <script>
         document.addEventListener("DOMContentLoaded", function () {

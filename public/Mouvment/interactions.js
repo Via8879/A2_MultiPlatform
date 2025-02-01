@@ -63,8 +63,10 @@ AFRAME.registerComponent("cursor-grab", {
         });
 
         function handleDrop(target, message) {
-            target.addEventListener("click", function () {
+            target.addEventListener("click", function (evt) {
                 if (grabbedObject) {
+                    let targetEntity = evt.target;
+                    console.log("dropped on:", targetEntity.id);
                     showMessage(message);
                     grabbedObject.parentNode.removeChild(grabbedObject);
                     grabbedObject = null;
